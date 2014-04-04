@@ -1,3 +1,13 @@
-module WinesHelper
-	<p><label>Winery:</label> <%= @wine.winery %></p>
-end
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WineReview</title>
+  <%= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" =>true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+  <%= yield %>
+  </body>
+  </html>

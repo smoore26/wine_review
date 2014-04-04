@@ -1,7 +1,10 @@
-class WinesController < ApplicationController
-  def index
-  	def show
-  	<p><label>Winery:</label> <%= @wine.winery %></p>
-
-  end
-end
+ class WineController < ApplicationController
+ 	def index
+ 		@wines = Wine.all
+ 	end
+ 	
+ 	def show
+ 		@wine = Wine.find(params[:id])
+ 	end
+ 	
+ end		

@@ -2,12 +2,10 @@
   <header>
      <h2><%= @wine.name%></h2>
   </header>
-<p><label>Year</label><%= @wine.year %></p
- <p><label>Winery:</label><%= @wine.winery %></p>
- <p><label>Country:</label><%= @wine.country %></p>
- <p><label>Varietal:</label><%= @wine.varietal %></p><p><label>Varietal:</label><%= @wine.winery %></p>
-  
-  
+  <p><label>Year</label><%= @wine.year %></p
+  <p><label>Winery:</label><%= @wine.winery %></p>
+  <p><label>Country:</label><%= @wine.country %></p>
+  <p><label>Varietal:</label><%= @wine.varietal %>
 </article>
  
  <%= link_to 'All Wines', wines_path%>
