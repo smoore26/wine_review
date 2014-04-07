@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-WineReview::Application.config.secret_key_base = '8baf19d49d52f62e8a16ffac27de1043b1c5f31ec093384eb47b56782c218dc560105caff87e3a9862b9fd113f06b6474057233ca3cec61d7a976e447c549670'
+WineReview::Application.config.secret_key_base = 'cf69a76a3cec54fdeb72f5707df7dc896834029da81d0ebd0f8b24cba30cd8db11665eef7ef383e6986c124ec6a50855101aeb6d59c89bc048be5ff67a7b9ff6'
