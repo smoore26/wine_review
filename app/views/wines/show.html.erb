@@ -9,3 +9,7 @@
 </article>
  
  <%= link_to 'All Wines', wines_path %>
+
+ <%= link_to 'Edit', edit_wine_path(@wine) %>
+ <%= button_for 'Delete', @wine, method: :delete,
+     data: {confirmation: 'Are you sure you wish to delete?'} %>

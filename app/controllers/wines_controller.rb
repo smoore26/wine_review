@@ -1,54 +1,66 @@
  class WinesController < ApplicationController
- 	
- def index
-     @wines = Wine.all
- end
- 	
- 	def show
- 		@wine = Wine.find(params[:id])
- 	end
-#before_action :set_wine, only [:show, :edit, :update, :destory]
- 	
-#def index
-	@wines = Wine.all
-#end
+ 
+before_filter :check_cancel, :only => [ :create, :edit]
 
-#def show
-    #leave empty
-#end
+before_action :set_wine, only [:show, :edit, :update, :destory]
+
+def index
+     @available_at = Time.now
+	 @wines = Wine.all
+end	
+  
+def show
+ 	#leave empty	
+end
 
 
-#def new
- #	@wine = Wine.new
-#
+def new
+	@wine = Wine.new
+end
 
-#def create 
-#	@wine = Wine.new(wine_params)
-#	@wine.save
-#	redirect_to @wine
-#end
+def create 
+	@wine = Wine.new(wine_params)
+	@wine.save
+	redirect_to @wine
+end
 
-#def edit
+def edit
 	#leave empty
-#end
+end
 
-#def update 
-#	@wine.update(wine_params)
-#	redirect_to @wine
-#end
+def update 
+	@wine.update(wine_params)
+	redirect_to @wine
+end
 
-#def destroy
- #    @wine.destroy
-  #   redirect_to_wines_url
-#end
+def destroy
+   @wine.destroy
+   redirect_to_wines_url
+end
 
-#private
+def check_cancel
+	openfile = File.open("steph_.out", "d")
+	openfile.puts "in check_cancel"
+	cx = params[:commit]
+	openfile.puts " para is #{cx}"
+	openfile.close
+	if params[:commit] == "Cancel"
+		redirect_to_wines_path
+	end
+end
 
-#def wine_params
-#	params.require(:wine).permit(:name, :year, :winery, :country, :varietal)
-#end
+def post 
+	#leave blank
+end
 
-#def set_wine
-#	@wine = Wine.find(params[:id])
-#end		
+private
+
+def wine_params
+	params.require(:wine).permit(:name, :year, :winery, :country, :varietal)
+end
+
+def set_wine
+	@wine = Wine.find(params[:id])
+end	
+	
 end
