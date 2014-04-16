@@ -1,5 +1,5 @@
 class Wine < ActiveRecord::Base
-VARIETALS = ['Restylane', 'Zinfindel', 'Merlot', 'Pinot Nior', ]
+VARIETALS = ['Restylane', 'Zinfindel', 'Merlot', 'Pinot Nior']
 scope :bargains, -> { where('price < 25.00') }
 scope :by, ->(author) { where('varietal = ?', varietal) }
 validates :name, :year, :country, :varietal, presence: true
