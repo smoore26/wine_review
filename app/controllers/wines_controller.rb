@@ -1,57 +1,60 @@
 class WinesController < ApplicationController
- 
+  before_action :set_wine, only: [:show, :edit, :update, :destroy]
 
-
-before_action :set_wine, only: [:show, :edit, :update, :destroy]
-
-def index
+  def index
      @available_at = Time.now
-	 @wines = Wine.all
-end	
+	 #@wines = Wine.all
+	 @wines = Wine.order(:name).page(params[:page])
+  end	
   
-def show
+  def show
  	#leave empty	
-end
+  end
 
 
-def new
+  def new
 	@wine = Wine.new
-end
+  end
 
-def create 
+  def create 
 	@wine = Wine.new(wine_params)
-	@wine.save
-	redirect_to @wine
-end
+	if @wine.save
+	  redirect_to @wine, notice: "#{@wine.name} was created."
+    else
+    	render :new
+    end	
+ end   
 
-def edit
+  def edit
 	#leave empty
-end
+  end
 
-def update 
-	@wine.update(wine_params)
-	redirect_to @wine
-end
+  def update 
+	if @wine.update(wine_params)
+	     redirect_to @wine, notice: "#{@wine.name} was updated."
+    else
+	     render :new
+    end 
+  end
 
-def destroy
+  def destroy
    @wine.destroy
-   redirect_to_wines_url
-end
+   redirect_to wines_url
+  end
 
 
-
-def post 
+  def post 
 	#leave blank
-end
+  end
 
 private
 
-def wine_params
+  def wine_params
 	params.require(:wine).permit(:name, :year, :winery, :country, :varietal)
-end
+  end
 
-def set_wine
+  def set_wine
 	@wine = Wine.find(params[:id])
-end	
+  end	
 	
 end
