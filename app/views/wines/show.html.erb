@@ -1,24 +1,26 @@
-<%content_for :name, @wine.name %>
+<% content_for :title, @wine.name %>
 
- 
-
-<article class ="wine">
+<article class="wine">
   <header>
-     <h2><%= @wine.name %></h2>
+    <h2><%= @wine.name %></h2>
   </header>
-  <p><label>Year:</label><%= @wine.year %></p
-  <p><label>Winery:</label><%= @wine.winery %></p>
-  <p><label>Country:</label><%= @wine.country %></p>
-  <p><label>Varietal:</label><%= @wine.varietal %>
+  <p><label>Year:</label> <%= @wine.year %></p>
+  <p><label>Winery:</label> <%= @wine.winery %></p>
+  <p><label>Country of origin:</label> <%= @wine.country %></p>
+  <p><label>Varietal:</label> <%= @wine.varietal %></p>
 </article>
 
-  <p> Read All
-      <%= link_to pluralize(@wine.log_entries.size, 'Log Entries'), wine_log_entries_path(@wine) %>
-   </p>
- 
-  <%= link_to 'All Wines', wines_path %>
-| <%= link_to 'Edit', edit_wine_path(@wine) %>
-  <%= button_to 'Delete', @wine,
-                 method: :delete,
-                 data: {confirm: 'Are you sure you wish to delete?'} %>
+
+<%= link_to 'Edit', edit_wine_path(@wine) %>
+
+| <%= button_to 'Delete', @wine, method: :delete,
+    data: { confirm: 'Are you sure?' } %>
+<p>
+Create a new Log Entry or read all
+<%= link_to pluralize(@wine.log_entries.size, 'Log Entries'),
+wine_log_entries_path(@wine) %>
+</p>
+
+<p><label>Average Rating:</label> 
+  <%= format_average_ratings(@wine) %></p>
 
