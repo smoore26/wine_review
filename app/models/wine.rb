@@ -1,5 +1,5 @@
 class Wine < ActiveRecord::Base
-VARIETALS = [ 'Restylane', 'Zinfindel', 'Merlot', 'Pinot Nior' ]
+VARIETALS = [ 'Restylane', 'Zinfindel', 'Merlot', 'Pinot Nior', 'Boreduex', 'Chianti' ]
 
 validates :name, :year, :country, :varietal, presence: true
 
